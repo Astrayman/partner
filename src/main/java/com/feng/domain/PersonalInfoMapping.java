@@ -2,6 +2,7 @@ package com.feng.domain;
 
 import java.io.Serializable;
 
+//个人信息映射模型
 public class PersonalInfoMapping implements Serializable
 {
 	/**

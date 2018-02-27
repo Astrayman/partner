@@ -2,6 +2,7 @@ package com.feng.domain;
 
 import java.io.Serializable;
 
+//项目信息映射模型
 public class ProjectInforMapping implements Serializable
 {
 	/**

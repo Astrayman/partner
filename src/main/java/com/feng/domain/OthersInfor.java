@@ -2,6 +2,7 @@ package com.feng.domain;
 
 import java.io.Serializable;
 
+//其他人信息模型
 public class OthersInfor implements Serializable
 {
 

@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	 <h1>合伙人</h1>
+	 <hr></hr>
+	 <a href="">注册</a>
+	 <a href="">登录</a>
 </body>
 </html>

@@ -16,8 +16,10 @@
      
       <context:component-scan base-package="com.feng.service"></context:component-scan>
       <context:component-scan base-package="com.feng.dao"></context:component-scan>
+       <!-- 后加的 -->
+      <context:component-scan base-package="com.feng.web"></context:component-scan>
       
-      
+     
       
        
 </beans>

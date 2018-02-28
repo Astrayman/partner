@@ -3,7 +3,8 @@ package com.feng.service.ProjectPage;
 import org.springframework.stereotype.Service;
 
 @Service
-public class QuitProject
+//申请加入项目
+public class ApplyJoinProjectService
 {
 
 }

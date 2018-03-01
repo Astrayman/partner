@@ -16,16 +16,41 @@
 	
 	<context:component-scan base-package="com.feng.web"></context:component-scan>
 	
-	
+	<!-- 会自动注册RequestMappingHandlerMapping 与 RequestMappingHandlerAdapter  -->
+	<!-- 提供多种支持springMVC书上的62页 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- 使用默认的Servlet来响应静态文件，包括请求来的文件 -->
 	<mvc:default-servlet-handler/> 
 	
+	<!-- 装备默认的类型转换器 -->
+	<mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+	<!-- 覆盖默认转换器，装备自定义的消息类型转换机制 -->
+    <bean id="conversionService" 
+      	class="org.springframework.context.support.ConversionServiceFactoryBean">
+    	<property name="converters">
+    		<list>
+    		<!-- 私有参数P：datePattern的值为字符串“yyyy-MM-dd”，将会做为bean传递给类StringToDateConverter -->
+    			<bean class="com.feng.converter.StringToDateConverter"
+    				p:datePattern="yyyy-MM-dd"></bean>
+    		</list>
+    	</property>  		
+    </bean>
+	
+	<!-- 定义返回的页面配置 -->
 	<bean p:suffix=".jsp" 
 	p:prefix="/WEB-INF/jsp/"
 	p:viewClass="org.springframework.web.servlet.view.JstlView" 
 	class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 	
-	
+	<!-- 定义拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截的请求类型 -->
+			<mvc:mapping path="*.inter"/>
+			<!-- 使用bean定义一个interceptor -->
+			<bean class="com.feng.interceptor.AuthorizationInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 	<!--  
 	<mvc:interceptors>

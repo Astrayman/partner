@@ -17,15 +17,31 @@ public class LogInService
 		this.personalInforMappingDao = personalInforMappingDao;
 	}
 	
-	//提供查找是否存在且匹配的用户，贡service层使用
-	public boolean matchUser( String personalAccount , String personalPassword)
+	//提供查找匹配的用户，贡service层使用
+	public boolean matchUser( int personalAccount , int personalPassword)
 	{
-		boolean hasMatched = false;
+		boolean MatchedAccount = false;
+		boolean MatchedPassword = false;
+		String password = "";
+		//先确定有无此人
+		MatchedAccount = hasMatchedAccount(personalAccount);
 		
-		hasMatched = personalInforMappingDao.findPersonByAccountNum(personalAccount);
+		if(MatchedAccount)
+		{
+			password = (personalInforMappingDao.testPersonalPassword(personalAccount));
+			if(password.equals(personalPassword))
+			{
+				MatchedPassword = true;
+				return MatchedPassword;
+			}
+			
+		}
+		return false;
 		
-		
-		
-		return hasMatched;
+	}
+	//查找是否存在的用户
+	public boolean hasMatchedAccount(int personalAccount )
+	{
+		return personalInforMappingDao.findPersonByAccountNum(personalAccount);
 	}
 }

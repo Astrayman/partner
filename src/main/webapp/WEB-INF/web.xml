@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee:description  
 	http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
 	id="WebApp_ID" version="3.1"> 
-	
+	<!-- 全局配置文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 	  	<param-value>classpath*:partner-config.xml</param-value>
@@ -15,6 +15,7 @@
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
+	<!-- springmvc拦截器 -->
 	<servlet>
 	  	<servlet-name>partner</servlet-name>
 	  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -28,4 +29,19 @@
 	  	<servlet-name>partner</servlet-name>
 	  	<url-pattern>*.do</url-pattern>
 	  </servlet-mapping>
+	  <!-- 编码过滤器 -->
+	  <filter>
+	  		<filter-name>characterEncodingFilter</filter-name>
+	  		<filer-class>org.springframework.web.filter.CharacterEncodingFilter</filer-class>
+			<init-param>
+				<param-name>encoding</param-name>
+				<param-value>UTF-8</param-value>
+			</init-param>
+	  </filter>
+	  <filter-mapping>
+	  		<filter-name>characterEncodingFilter</filter-name> 
+	  		<url-pattern>*.*</url-pattern>
+	  </filter-mapping>
+	  	  
+	  
 </web-app>

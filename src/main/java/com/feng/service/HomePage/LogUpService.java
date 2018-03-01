@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 //注册
 public class LogUpService
 {
-
+	//可能不需要用
 }

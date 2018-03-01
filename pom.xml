@@ -57,6 +57,7 @@
 		  
 		</dependency>
 		<!-- commons-dbcp、 -->
+		<!-- 数据源包 -->
 		<dependency>
     		<groupId>commons-dbcp</groupId>
     		<artifactId>commons-dbcp</artifactId>
@@ -84,12 +85,10 @@
 		    <version>${jstl-api.version}</version>
 		</dependency>
 		-->
-		
-		
+
 		<dependency>
 	    	<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-		    
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
@@ -112,7 +111,18 @@
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis-spring</artifactId>
-		</dependency>	
+		</dependency>
+		<!-- 请求数据检验 -->
+		<dependency>
+		    <groupId>org.apache.bval</groupId>
+		    <artifactId>bval-jsr</artifactId>
+		</dependency>
+		<!-- 文件下载jar包 -->
+		<dependency>
+			 <groupId>commons-fileupload</groupId>
+			 <artifactId>commons-fileupload</artifactId>
+		</dependency>
+				
  	</dependencies>
   
 </project>

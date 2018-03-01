@@ -9,28 +9,28 @@ public class PersonalInfoMapping implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String personalAccount; //账号
-	private String personalPassword; //密码
+	private int personalAccount; //账号
+	private int personalPassword; //密码
 	private String personalNumber;	//编号
 	
 	public PersonalInfoMapping() {}
 
-	public String getPersonalAccount()
+	public int getPersonalAccount()
 	{
 		return personalAccount;
 	}
 
-	public void setPersonalAccount(String personalAccount)
+	public void setPersonalAccount(int personalAccount)
 	{
 		this.personalAccount = personalAccount;
 	}
 
-	public String getPersonalPassword()
+	public int getPersonalPassword()
 	{
 		return personalPassword;
 	}
 
-	public void setPersonalPassword(String personalPassword)
+	public void setPersonalPassword(int personalPassword)
 	{
 		this.personalPassword = personalPassword;
 	}

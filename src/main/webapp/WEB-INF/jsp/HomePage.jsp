@@ -4,12 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Partner</title>
 </head>
 <body>
-	 <h1>合伙人</h1>
+	 <h1>homepage</h1>
 	 <hr/>
-	 <a href="logup.jsp">注册</a>
-	 <a href="login.jsp">登录</a>
+	 应该写个页面头部，每个页面都要判断客户是否已经登录，从而确定是否要显示注册登录和用户信息
+	 <a href="/login.do" >登录</a>
+	 <a href="/logup.jsp">注册</a>
+	 <hr/>
+	 <form action="/searcher.do" method="post" >
+	 <input type="file" name="file">
+	 <input type="text" name="sercherText" id="sercherText">
+	 <input type="submit" name="sercherSubmit" id="sercherSubmit" value="搜索">
+	 </form>
 </body>
 </html>

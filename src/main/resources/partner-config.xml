@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
+	
 	xmlns:aop="http://www.springframework.org/schema/aop" 
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
@@ -11,6 +13,9 @@
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/tx 
        http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd
+       
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd"> 
      
@@ -19,7 +24,33 @@
        <!-- 后加的 -->
       <context:component-scan base-package="com.feng.web"></context:component-scan>
       
-     
+      <!-- mybatis:scan 会扫描com.feng.dao包里的所有接口当作dao配置，会自动引入dao类 -->
+      <mybatis:scan base-package="com.feng.dao"/>
+      <!-- 如何配置多数据源？？ -->
       
-       
+      <!-- 使用PropertyoverideConfigurer后处理器加载数据源参数 P147	-->
+      <context:property-override location="classpath*:db.properties"/>
+      <!-- 配置数据源,还没配置 -->
+      <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+      <!-- ?? P236 配置sqlsessionfactory，用于整合spring的bean -->
+      <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+      	p:dataSource-ref="dataSource"></bean>
+      <!-- JDBC事务管理器 -->
+      <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+      	p:dataSource-ref="dataSource"></bean>
+      <!-- 启用支持annotation注解方式事务管理 -->
+      <tx:annotation-driven transaction-manager="transactionManager"/>
+      
+      <!-- 配置文件上传功能 -->
+      <bean id="multipartResolver"
+      	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      	<!-- 上传文件的大小上限，单位为字节（10M） -->
+	      	<property name="maxUploadSize">
+	      		<value>10485760</value>
+	      	</property>
+	      	<!-- 请求编码格式，必须和JSP页面的pageEncoding属性一致，以便正确读取表单内容 -->
+      		<property name="defaultEncoding">
+      			<value>UTF-8</value>
+      		</property>
+      	</bean>       
 </beans>

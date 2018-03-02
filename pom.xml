@@ -7,10 +7,11 @@
   <name>partner Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
+  <!--
   <build>
     <finalName>partner</finalName>
   </build>
-  
+    -->
   <parent>
     
 	  	<groupId>com.parent</groupId>
@@ -18,7 +19,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	
   </parent>
-  
+  <properties>
+  	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	    <jetty-maven-plugin.version>9.4.8.v20171121</jetty-maven-plugin.version>
+  </properties>
   <dependencies>
    		 <dependency>
     	  <groupId>junit</groupId>
@@ -122,7 +126,28 @@
 			 <groupId>commons-fileupload</groupId>
 			 <artifactId>commons-fileupload</artifactId>
 		</dependency>
+		<!-- c3p0，配置数据源 -->
+		<dependency>
+		    <groupId>com.mchange</groupId>
+		    <artifactId>c3p0</artifactId>
+		</dependency>
+		
 				
  	</dependencies>
-  
+   
+	<build>
+ 		<plugins>
+ 			<plugin>
+	    		<groupId>org.eclipse.jetty</groupId>
+			    <artifactId>jetty-maven-plugin</artifactId>
+			    <version>${jetty-maven-plugin.version}</version><!--$NO-MVN-MAN-VER$-->
+ 				<configuration>
+ 					<httpConnector>
+ 					<port>8080</port>
+ 					</httpConnector>
+ 				</configuration>
+ 			</plugin>
+ 		</plugins>
+	</build>
+
 </project>

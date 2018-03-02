@@ -19,28 +19,29 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd"> 
      
-      <context:component-scan base-package="com.feng.service"></context:component-scan>
+      <context:component-scan base-package="com.feng.services"></context:component-scan>
+    <!-- 
       <context:component-scan base-package="com.feng.dao"></context:component-scan>
+        -->
        <!-- 后加的 -->
-      <context:component-scan base-package="com.feng.web"></context:component-scan>
+      <context:component-scan base-package="com.feng.control"></context:component-scan>
       
       <!-- mybatis:scan 会扫描com.feng.dao包里的所有接口当作dao配置，会自动引入dao类 -->
       <mybatis:scan base-package="com.feng.dao"/>
       <!-- 如何配置多数据源？？ -->
       
-      <!-- 使用PropertyoverideConfigurer后处理器加载数据源参数 P147	-->
+      <!-- 使用PropertyOverideConfigurer后处理器加载数据源参数 P147	-->
       <context:property-override location="classpath*:db.properties"/>
-      <!-- 配置数据源,还没配置 -->
-      <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+      <!-- 配置数据源 -->
+      <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"></bean>
       <!-- ?? P236 配置sqlsessionfactory，用于整合spring的bean -->
       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
       	p:dataSource-ref="dataSource"></bean>
-      <!-- JDBC事务管理器 -->
+      <!-- JDBC事务管理器 ,原子操作 -->
       <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
       	p:dataSource-ref="dataSource"></bean>
       <!-- 启用支持annotation注解方式事务管理 -->
       <tx:annotation-driven transaction-manager="transactionManager"/>
-      
       <!-- 配置文件上传功能 -->
       <bean id="multipartResolver"
       	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

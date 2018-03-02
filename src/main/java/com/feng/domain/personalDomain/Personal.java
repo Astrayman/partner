@@ -1,50 +1,42 @@
-package com.feng.domain;
+package com.feng.domain.personalDomain;
 
 import java.io.Serializable;
 
-//个人信息映射模型
-public class PersonalInfoMapping implements Serializable
+public class Personal implements Serializable
 {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int personalAccount; //账号
-	private int personalPassword; //密码
-	private String personalNumber;	//编号
 	
-	public PersonalInfoMapping() {}
-
+	private int personalAccount;
+	private int personalPassword;
+	private int personalNumber;
 	public int getPersonalAccount()
 	{
 		return personalAccount;
 	}
-
 	public void setPersonalAccount(int personalAccount)
 	{
 		this.personalAccount = personalAccount;
 	}
-
 	public int getPersonalPassword()
 	{
 		return personalPassword;
 	}
-
 	public void setPersonalPassword(int personalPassword)
 	{
 		this.personalPassword = personalPassword;
 	}
-
-	public String getPersonalNumber()
+	public int getPersonalNumber()
 	{
 		return personalNumber;
 	}
-
-	public void setPersonalNumber(String personalNumber)
+	public void setPersonalNumber(int personalNumber)
 	{
 		this.personalNumber = personalNumber;
 	}
-	
 	
 	
 }
